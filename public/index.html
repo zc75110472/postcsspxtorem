@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>postcsstorem_demo</title>
+    <script>
+      (function (win, doc) {
+        if (!win.addEventListener) return;
+        var html = document.documentElement;
+        function setFont() {
+            var html = document.documentElement;
+            html.style.fontSize = html.clientWidth / 10  + "px";
+        }
+        setFont();
+        setTimeout(function () {
+            setFont();
+        }, 300);
+        doc.addEventListener('DOMContentLoaded', setFont, false);
+        win.addEventListener('resize', setFont, false);
+        win.addEventListener('load', setFont, false);
+    })(window, document);
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <% if (htmlWebpackPlugin.options.env === 'production') { %>
+      <script src="//lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+      <script src="//lib.baomitu.com/axios/0.18.0/axios.min.js"></script>
+      <% } %>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
